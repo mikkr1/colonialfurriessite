@@ -1,13 +1,149 @@
 <!DOCTYPE HTML>
-<head>
-<style>
-p.impact {
-  font-family: Impact, Charcoal, sans-serif;
-}
-</style>
-</head>
-<body style="background-color:black;">
-<img src="https://cooltext.com/Rendered/Cool-Text--357138714789826.png" alt="Colonial Furries"/>
-  <p class="impact">ARE YOU READY FOR SOME AWESOME FURRY ON XENOMORPH ACTION?!?</p>
-<audio src="doom.mp4" autoplay loop></audio>
-</body>
+<html><head>
+  <title>CHUMPSTATION</title>
+   <title>index.html</title>
+ <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript">// Promises 
+var _eid_promises = {}; 
+// Turn the incoming message from extension 
+// into pending Promise resolving 
+window.addEventListener("message", function(event) { 
+    if(event.source !== window) return; 
+    if(event.data.src && (event.data.src === "background.js")) { 
+        console.log("Page received: "); 
+        console.log(event.data); 
+        // Get the promise 
+        if(event.data.nonce) { 
+            var p = _eid_promises[event.data.nonce]; 
+            // resolve 
+            if(event.data.result === "ok") { 
+                if(event.data.signature !== undefined) { 
+                    p.resolve({hex: event.data.signature}); 
+                } else if(event.data.version !== undefined) { 
+                    p.resolve(event.data.extension + "/" + event.data.version); 
+                } else if(event.data.cert !== undefined) { 
+                    p.resolve({hex: event.data.cert}); 
+                } else { 
+                    console.log("No idea how to handle message"); 
+                    console.log(event.data); 
+                } 
+            } else { 
+                // reject 
+                p.reject(new Error(event.data.result)); 
+            } 
+            delete _eid_promises[event.data.nonce]; 
+        } else { 
+            console.log("No nonce in event msg"); 
+        } 
+    } 
+}, false); 
+ 
+ 
+function TokenSigning() { 
+    function nonce() { 
+        var val = ""; 
+        var hex = "abcdefghijklmnopqrstuvwxyz0123456789"; 
+        for(var i = 0; i < 16; i++) val += hex.charAt(Math.floor(Math.random() * hex.length)); 
+        return val; 
+    } 
+ 
+    function messagePromise(msg) { 
+        return new Promise(function(resolve, reject) { 
+            // amend with necessary metadata 
+            msg["nonce"] = nonce(); 
+            msg["src"] = "page.js"; 
+            // send message 
+            window.postMessage(msg, "*"); 
+            // and store promise callbacks 
+            _eid_promises[msg.nonce] = { 
+                resolve: resolve, 
+                reject: reject 
+            }; 
+        }); 
+    } 
+    this.getCertificate = function(options) { 
+        var msg = {type: "CERT", lang: options.lang, filter: options.filter}; 
+        console.log("getCertificate()"); 
+        return messagePromise(msg); 
+    }; 
+    this.sign = function(cert, hash, options) { 
+        var msg = {type: "SIGN", cert: cert.hex, hash: hash.hex, hashtype: hash.type, lang: options.lang, info: options.info}; 
+        console.log("sign()"); 
+        return messagePromise(msg); 
+    }; 
+    this.getVersion = function() { 
+        console.log("getVersion()"); 
+        return messagePromise({ 
+            type: "VERSION" 
+        }); 
+    }; 
+}</script></head>
+<body>
+
+<div>
+  <style>
+    body {
+        background-image: url(starbackground.gif);
+    body  
+    }
+  </style>
+</div>
+<div>
+  <center> <h1><img src="https://chumpnet.neocities.org/luigicara.gif" width="216" height="216"> Welcome to the <strong><abbr title="You">chumpnet</abbr></strong><img src="https://chumpnet.neocities.org/luigicara.gif" width="216" height="216"></h1> </center>
+  <br>
+  <center>
+
+<hr>
+  <marquee behavior="alternate" scrollamount="17" direction="left" class="marq"> <img src="https://chumpnet.neocities.org/Images/neocities3.gif"> Enjoy Hell, chump! <img src="https://chumpnet.neocities.org/Images/neocities3.gif">    </marquee>
+<hr>     
+    <h2> <img src="https://chumpnet.neocities.org/wamkydancingskull.gif"> Here's where you can listen to the <strong>CHUMP JAMZ</strong> <a href="https://www.youtube.com/watch?v=ia9uOLIzoow"> <img src="https://chumpnet.neocities.org/wamkydancingskull.gif" width="90" height="130" alt="tune time"> </a> </h2>
+  </center>
+</div>
+<div>
+   
+     <p>
+        </p><ul>
+          <li> <a href="/Jamz_Land.html"> The <strong>JAMZ</strong> </a> </li>
+        </ul>
+</div>     
+  <p style="color: red">Coom Cave cooming soon!</p>
+  <form action="Give me your information.php" method="post">
+      <p> Name:  </p>
+     <p input="name" value="Your name"><textarea rows="1" cols="20"></textarea> </p>
+    
+     <p>Comments:</p>
+     <p> <textarea rows="10" cols="40" name="comments"> </textarea> </p>
+    
+     <p>Are you: </p>
+     <p><input type="radio" name="are you" value="male"> Male</p>
+     <p><input type="radio" name="are you" value="female"> Female</p>
+     <p><input type="radio" name="are you" value="cripple"> Cripple</p>
+     <p><input type="radio" name="are you" value="dead"> Dead</p>
+      <input type="submit" value="Die">
+    </form>
+   <br>
+     <img src="https://chumpnet.neocities.org/Images/AnakinCrybaby.png" width="190" height="123"> 
+      <abbr title="You"> I </abbr> killed them <abbr title="muslims"> all </abbr>! They're <abbr title="lole"> dead </abbr>, every <abbr title="still you"> single </abbr> one of them!
+    
+    <br>
+  <div id="table">
+  <p1> 
+    <table>
+      <tbody><tr>
+        <td> Placeholder </td>
+      </tr>
+      <tr>
+        <td> Placeholder </td>
+      </tr>
+      <tr>
+        <td> Placeholder </td>
+      </tr>
+    </tbody></table>
+  </p1>
+  </div>
+  <center> <h3> Flip a switch if you'd like CHUMP, this page is still <img src="https://chumpnet.neocities.org/underconstruction.gif" width="323" height="118"> </h3> </center>
+  
+  
+
+
+  </body></html>
