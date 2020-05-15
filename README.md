@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<style>
-body {
-  background-image: url('funniest_shit.png');
-}
-</style>
-
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/mikkr1/siteshitstuff/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
